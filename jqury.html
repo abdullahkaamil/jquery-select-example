@@ -1,0 +1,182 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>select option array (Jquery)
+    </title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+   <script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="contianer">
+        <form action="">
+                <div class="row">
+                        <div class="col-xs-6">
+                            <div class="form-group">
+                                <label for="type">Bilet Tipi</label>
+                                <select class="form-control" id="contact-ticket-type">
+                                    <option>Lütfen bilet Tipi seçin</option>
+                                </select>
+                         
+                            </div>
+                        </div>
+                        <div class="col-xs-6">
+                            <div class="form-group">
+                                <label for="about">Konu</label>
+                                <select class="form-control" id="contact-ticket-topic">
+                                    <option>Lütfen Konuyu seçin</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group display-none" role="alert" id="details"></div>
+        </form>
+    </div>
+    
+<script>
+    $(document).ready(function() {
+        var contactForm = {
+        'IDO' : 
+            {
+            "Bilet değişikliği talebi" : "Sadece IDO çağrı merkezi 444-4436'dan yapılmaktadır. Kurallar için <a href='https://www.ido.com.tr/importantinfo-new#iptal-iade-kurallari' target='_blank'>https://www.ido.com.tr/importantinfo-new#iptal-iade-kurallari</a>",
+            "Bilet iptali talebi" : "Sadece ido.com.tr'den ve IDO çağrı merkezi 444-4436'dan yapılmaktadır. Kurallar için <a href='https://www.ido.com.tr/importantinfo-new#iptal-iade-kurallari' target='_blank'>https://www.ido.com.tr/importantinfo-new#iptal-iade-kurallari</a>",
+            "Bilgi düzeltme talebi (isim/tckimlik/eposta/tel/plaka/...)" : "Sadece IDO çağrı merkezi 444-4436'dan yapılmaktadır.",
+            "Fatura talebi" : "IDO biletinin e-bilet olduğundan fatura yerine geçmektedir. Biletinizi <a href='https://ebilet.fitbulut.com/ETIC_WEB_CUST_IDO_10/index.html' target='_blank'>https://ebilet.fitbulut.com/ETIC_WEB_CUST_IDO_10/index.html</a> adresinden PDF olarak indirebilirsiniz.",
+            "Bilet QR kodu talebi" : "QR kodlarınız biletinizi aldığınızda IDO tarafında sizinle SMS/epostayla paylaşılmaktadır. QR kodu ve e-biletinizi <a href='https://ebilet.fitbulut.com/ETIC_WEB_CUST_IDO_10/index.html' target='_blank'>https://ebilet.fitbulut.com/ETIC_WEB_CUST_IDO_10/index.html</a> adresinden sorgulayabilir ve indirebilirsiniz.",
+            "Yarıda kalan işlem tabebi (İşlem yarım kaldı, bilet oluştu mu?)" : "Yarıda kalan işlem hakkında araştırma yapılabilmesi için lütfen bilet bilgilerini (espota, telefon, yolcu adi, tckimlik, kalkış varış, tarih, saat, vs) paylaşınız ",
+            "Bilet SMS/epostası talebi"	: "QR kodu ve e-biletinizi <a href='https://ebilet.fitbulut.com/ETIC_WEB_CUST_IDO_10/index.html' target='_blank'>https://ebilet.fitbulut.com/ETIC_WEB_CUST_IDO_10/index.html</a> adresinden sorgulayabilir ve indirebilirsiniz. Bilet.com bilgilendirme SMS/epostası ücrestsiz olarak yukarıda verilen eposta ve telefonua gönderilecektir.",
+            "Bilet sorgulama ve teyit talebi" : "Bilet bilgilerinizi ve QR kodunuzu https://www.ido.com.tr/ticketdetails, <a href='https://ebilet.fitbulut.com/ETIC_WEB_CUST_IDO_10/index.html' target='_blank'>https://ebilet.fitbulut.com/ETIC_WEB_CUST_IDO_10/index.html</a> veya <a href='https://www.bilet.com/feribot/rezervasyon-sorgulama' target='_blank'>https://www.bilet.com/feribot/rezervasyon-sorgulama</a> adreslerinden sorgulayabilirsiniz.",
+            "Hava muhalefetinden sefer iptal mi?" : "Lütfen sefer iptal-iade şartlarını <a href='https://www.ido.com.tr/importantinfo-new#iptal-iade-kurallari' target='_blank'>https://www.ido.com.tr/importantinfo-new#iptal-iade-kurallari</a> adresinden dikkatlice okuyunuz. Bilgi için IDO çağrı merkezi 444-4436'yı arayabilirsiniz. Hava muhalefetinden veya operasyonel sebeplerden sfer iptalleri ido.com.tr adresinde ilan edilmektedir. Sefer iptal edilirse yolculara bilet iptali ve ücret iadesi bilgilendirmesi yapılmaktadır. Bu durumda biletinizi <a href='https://www.ido.com.tr/ticketdetails' target='_blank'> https://www.ido.com.tr/ticketdetails  </a> veya <a href='https://ebilet.fitbulut.com/ETIC_WEB_CUST_IDO_10/index.html' target='_blank'>https://ebilet.fitbulut.com/ETIC_WEB_CUST_IDO_10/index.html</a>adreslerinden sorgulayabilirsiniz. İptal ve iadeler IDO sistemi tarafından 72 saat içinde otomatik yapılmaktadır. Dilerseniz bilette çağrı merkezini arayarak değişiklik yapabilirsiniz. " ,
+            "İade ne zaman hesaba yansır?" : "İade bilgi talebi sadece IDO çağrı merkezinden 444-4436 yapılmaktadır. Genel bir kural olarak iadenin hesabınıza yansıması banka kaynaklı olarak kredi kartlarında 1-7 iş günü, debit kartlarda 1-30 iş günü almaktadır. İş günlerini sayarken resmi tatiller ve hafta sonu sayılmamaktadır.",
+            "Şikayet"	: "Şikayetler <a href='mailto:info@ido.com.tr'target='_top'>info@ido.com.tr </a> veya IDO çağrı merkezi 444-4436ya yapılmalıdır.",
+            "Diğer"	: "Diğer tüm talepleriniz için mesajınızı paylaşabilirsiniz.",
+            },
+    
+        'BUDO':
+            {
+            "Bilet değişikliği talebi (tarih/saat/liman/koltuk/yolcu/araç/...)"	:  "<a href='https://budo.burulas.com.tr/' target='_blank'>https://budo.burulas.com.tr/</a> E-bilet bölümünden yapılmaktadır.", 
+            "Bilet sorgulama ve teyit talebi"  : "Bilet satışı sadece Bilet.com web sayfamız üzerinden yapılmaktadır. ",
+            "Bilet iptali talebi" :  "<a href='https://budo.burulas.com.tr/' target='_blank'>https://budo.burulas.com.tr/</a> E-bilet bölümünden yapılmaktadır.",   
+            "Bilgi düzeltme talebi (isim/tckimlik/eposta/tel/plaka/...)" : "<a href='https://budo.burulas.com.tr/' target='_blank'>https://budo.burulas.com.tr/</a> E-bilet bölümünden yapılmaktadır.",   
+            "Fatura talebi" : "Elektronik bilet fatura yerine geçmekte olup tarafımızdan herhangi bir fatura kesilmemektedir.  <a href='https://budo.burulas.com.tr/' target='_blank'>https://budo.burulas.com.tr/</a> buradan E-biletinize ulaşabilirsiniz.",
+            "Bilet QR kodu talebi" : "Yarıda kalan işlem talebi (İşlem yarım kaldı, bilet oluştu mu?) Bununla ilgili 0212 691 64 26 nolu telefona ulaşmanız gerekmektedir.",
+            "Bilet SMS/epostası talebi"	: "İletişim formumuzdan talepte bulunabilirsiniz.",
+            "Bilet sorgulama ve teyit talebi" :  "İletişim formumuzdan talepte bulunabilirsiniz.  ",
+            "Hava muhalefetinden sefer iptal mi?" : "Lütfen sefer iptal-iade şartlarını <a href='https://budo.burulas.com.tr/tr/Page/RefundConditions' target='_blank'>https://budo.burulas.com.tr/tr/Page/RefundConditions </a> adresinden dikkatlice okuyunuz. Bilgi için BUDO çağrı merkezi 0850 850 99 16'yı arayabilirsiniz. Hava muhalefetinden veya operasyonel sebeplerden sefer iptalleri <a href='https://budo.burulas.com.tr/' target='_blank'>https://budo.burulas.com.tr/</a>  adresinde ilan edilmektedir. Sefer iptal edilirse yolculara bilet iptali ve ücret iadesi bilgilendirmesi yapılmaktadır. Bu durumda biletinizi e- bilet bölümünden <a href='https://budo.burulas.com.tr/' target='_blank'>https://budo.burulas.com.tr/</a>  adresinden sorgulayabilirsiniz. İptal ve iadelerBUDO sistemi tarafından 72 saat içinde otomatik yapılmaktadır. ",   
+            "İade ne zaman hesaba yansır?" : "3-5 iş günü içerisinde yansıyacaktır.",
+            "Şikayet"	:  "Şikayetler BUDO çağrı merkezi 0850 850 99 16 'ya yapılmalıdır.", 
+            "Diğer"	: "Diğer tüm talepleriniz için mesajınızı paylaşabilirsiniz.",
+        },
+    
+        'YunanAdalari':{
+            "Bilet değişikliği talebi (tarih/saat/liman/koltuk/yolcu/araç/...)"	: "Öncelikle bilet PNR numarasını veriniz (Eğer PNR'ı bilmiyorsanız, biletinizi bulabilmemiz için sefer tarih, saat, kalkış, varış yeri bilgisi, yolcu adı, tel, eposta, kredi kartı son 4 hanesi vb. bilgileri paylaşınız) Sonrasında ypmak istediğiniz değişikliği belirtiniz. Lütfen değişikliğin tarih-saat mi, bilete yolcu/araç ekleme/çıkarma mı, kalkış veya varış limanı değişikliği mi vb. olduğunu belirtiniz." ,
+            "Bilet iptali talebi" : "Öncelikle iptal etmek istediğiniz biletin PNR numarasını (PNR hatırlamıyorsanız biletinizi bulabilmemiz için sefer tarih, saat, kalkış, varış yeri bilgisi, yolcu adı, tel, e-posta, kredi kartı son 4 hanesi vb. bilgilerini) paylaşınız. Sonrasında biletin tamamının iptalini mi yoksa kısmı iptal istdiğinizi yolcu isimleriyle birlikte belirtiniz. Sadece gidis veya dönüş iptali yapılacaksa belirtiniz. Son olarak lütfen bilet iptal sebebini belirtiniz.Konuyla ilgili satın alınan firma ile görüşülüp tarafınıza dönüş yapılacaktır.",
+            "Bilgi düzeltme talebi (isim/tckimlik/eposta/tel/plaka/...)" : "Lütfen yanlış girilen bilgiyi ve doğrusunu paylaşınız. Pasaport no, tckimlik no, isim, doğum tarihi vb resmi bilgilerin düzeltmesi için talebin doğrudan feribot firmasına yapılması gerekmektedir. Sizin için bu düzeltme talebini biz de feribot firmasına iletebiliriz.",
+            "Fatura talebi" : "Fatura kesebilmek için lütfen fatura bilgilerini (KİŞİSEL fatura için Ad Soyad, TCKimlik, İl, İlçe, KURUMSAL fatura için şirket adı, vergi no, vergi dairesi, il, ilçe) bizimle paylaşınız. Faturanız en kısa sürede kesilip taranarak bir kopyası epostayla tarafınıza iletilecektir. Kargoyla fatura talebi için lütfen kargo adresini paylaşınız.",
+            "Bilet QR kodu talebi" : " Talep için iletişime geçebilirsiniz.",
+            "Yarıda kalan işlem talebi (İşlem yarım kaldı, bilet oluştu mu?)" : " Tarafımıza iletişime geçebilirsiniz.",
+            "Bilet SMS/epostası talebi"	: " Tarafımıza iletişime geçebilirsiniz.",
+            "Bilet sorgulama ve teyit talebi" : " Tarafımıza iletişime geçebilirsiniz.",  
+            "Hava muhalefeti vb sebepten sefer iptal mi?"	: "Bu gibi durumlarda sizinle iletişime geçilir ve iptal ya da değişiklik yapılır.",
+            "İade ne zaman hesaba yansır?" : " Kredi kartlarında 1-7, banka kartlarında 1-30 iş günü içerisinde hesabınıza yansımaktadır.",
+            "Şikayet": "  Firma adına şikayetlerinizi direkt olarak firmalara iletmeniz gerekmektedir.",  
+            "Diğer"	: "Diğer tüm talepleriniz için mesajınızı paylaşabilirsiniz."  
+        },
+        
+        'Otobus':{
+            "Bilet değişikliği talebi (tarih/saat/liman/koltuk/yolcu/araç/...)"	: " Tarafımıza iletişime geçebilirsiniz. (METRO TURİZM :  0850 222 34 55 ) ",
+            "Bilet iptali talebi" : " Tarafımıza iletişime geçebilirsiniz. (METRO TURİZM :  0850 222 34 55 ) ",  
+            "Bilgi düzeltme talebi (isim/tckimlik/eposta/tel/plaka/...)" : " Tarafımıza iletişime geçebilirsiniz.  (METRO TURİZM :  0850 222 34 55 )",  
+            "Fatura talebi" : " Sefer günü size yazıhanede verilen basılmış bilet fatura yerine geçmektedir.",
+            "Bilet QR kodu talebi" : "-",
+            "Yarıda kalan işlem tabebi (İşlem yarım kaldı, bilet oluştu mu?)" : " Tarafımıza iletişime geçebilirsiniz. (METRO TURİZM :  0850 222 34 55 )  ", 
+            "Bilet SMS/epostası talebi"	: " Tarafımıza iletişime geçebilirsiniz. ",  
+            "Bilet sorgulama ve teyit talebi" : " Tarafımıza iletişime geçebilirsiniz.  ",
+            "Hava muhalefetinden sefer iptal mi?" : "Bu gibi durumlardan sizinle iletişime geçilir ve sistem gereği direkt olarak iptal iade yapılır. (METRO TURİZM :  0850 222 34 55 ) ",  
+            "İade ne zaman hesaba yansır?" : "  Kredi kartlarında 1-7, banka kartlarında 1-30 iş günü içerisinde hesabınıza yansımaktadır.   (METRO TURİZM :  0850 222 34 55 )  ", 
+            "Şikayet"	: "   Firma adına şikayetlerinizi direkt olarak otobüs firmalarına iletmeniz gerekmektedir.  ",
+            "Diğer"	: "Diğer tüm talepleriniz için mesajınızı paylaşabilirsiniz."
+        },
+    
+        'Ucak':{
+            "Bilet değişikliği talebi (tarih/saat/liman/koltuk/yolcu/araç/...)"	: "0212 496 16 44 numaralı birimden yapılmaktadır.",
+            "Bilet iptali talebi" : " 0212 496 16 44 numaralı birimden yapılmaktadır.",
+            "Bilgi düzeltme talebi (isim/tckimlik/eposta/tel/plaka/...)" : " 0212 496 16 44 numaralı birimden yapılmaktadır.",   
+            "Fatura talebi" : " Bilet satın aldıktan 7 iş günü içerisinde faturanız e-mail adresine gelecektir.",
+            "Bilet QR kodu talebi" : "-",
+            "Yarıda kalan işlem talebi (İşlem yarım kaldı, bilet oluştu mu?)" : " 0212 496 16 44 numaralı birimden yapılmaktadır.",  
+            "Bilet SMS/epostası talebi"	: " Talebinizi bizimle paylaşabilirsiniz.",
+            "Bilet sorgulama ve teyit talebi" : " Talebinizi bizimle paylaşabilirsiniz.",  
+            "Hava muhalefetinden sefer iptal mi?" : " İptal olduğu takdirde tarafınıza ilgili birimden dönüş yapılacaktır.",
+            "İade ne zaman hesaba yansır?" : " 5 iş günü içerisinde hesabınıza yansımaktadır.",
+            "Şikayet"	: " Firma adına şikayetlerinizi direkt olarak firmalara iletmeniz gerekmektedir.",
+            "Diğer"	: "Diğer tüm talepleriniz için mesajınızı paylaşabilirsiniz."  
+        },
+    
+        'Kıbrıs':{
+            "Bilet değişikliği talebi (tarih/saat/liman/koltuk/yolcu/araç/...)"	: " Akgünler : 0 324 741 4033 Filo: 0392 815 39 41 ",
+            "Bilet iptali talebi" : "Akgünler : 0 324 741 4033 Filo: 0392 815 39 41 ",
+            "Bilgi düzeltme talebi (isim/tckimlik/eposta/tel/plaka/...)" : " Akgünler : 0 324 741 4033 Filo: 0392 815 39 41 ",  
+            "Fatura talebi" : " Check-in işleminden sonra size verilen biniş kartı fatura yerine geçmekte olup tarafımızdan herhangi bir fatura kesilmemektedir.",
+            "Bilet QR kodu talebi" : "-",
+            "Yarıda kalan işlem tabebi (İşlem yarım kaldı, bilet oluştu mu?)" : "  Tarafımıza iletişime geçebilirsiniz. ",   
+            "Bilet SMS/epostası talebi"	: " Tarafımıza iletişime geçebilirsiniz.    ",
+            "Bilet sorgulama ve teyit talebi" : " Tarafımıza iletişime geçebilirsiniz.    ",
+            "Hava muhalefetinden sefer iptal mi?" : " Bu gibi durumlardan sizinle iletişime geçilir ve sistem gereği direkt olarak iptal iade yapılır. ", 
+            "İade ne zaman hesaba yansır?" : "  Kredi kartlarında 1-7, banka kartlarında 1-30 iş günü içerisinde hesabınıza yansımaktadır.  ",
+            "Şikayet"	: " Akgünler : 0 324 741 4033 Filo: 0392 815 39 41   ",
+            "Diğer"	: "Diğer tüm talepleriniz için mesajınızı paylaşabilirsiniz." 
+        },
+    
+        'İsfanbul':{ 
+            "Bilet değişikliği talebi (tarih/saat/liman/koltuk/yolcu/araç/...)"	: " 0850 210 85 63   ",
+            "Bilet iptali talebi" : " 0850 210 85 63   ",
+            "Bilgi düzeltme talebi (isim/tckimlik/eposta/tel/plaka/...)" : " 0850 210 85 63  ", 
+            "Fatura talebi" : " - ",
+            "Bilet QR kodu talebi" : " Tarafımıza iletişime geçebilirsiniz. ",
+            "Yarıda kalan işlem talebi (İşlem yarım kaldı, bilet oluştu mu?)" : " Tarafımıza iletişime geçebilirsiniz.   ",
+            "Bilet SMS/epostası talebi"	: " Tarafımıza iletişime geçebilirsiniz.   ",
+            "Bilet sorgulama ve teyit talebi" : " Tarafımıza iletişime geçebilirsiniz.  ", 
+            "İade ne zaman hesaba yansır?" : " 0850 210 85 63  ", 
+            "Şikayet"	: " 0850 210 85 63   ",
+            "Diğer"	: "Diğer tüm talepleriniz için mesajınızı paylaşabilirsiniz."
+        }
+        };
+            
+        var ticketTypeSelect = document.getElementById('contact-ticket-type');
+        var ticketTopicSelect = document.getElementById('contact-ticket-topic');
+    
+        for(var tipi in contactForm){
+            ticketTypeSelect.options[ticketTypeSelect.options.length] = new Option(tipi);
+        }
+        
+        $("#contact-ticket-type").change(function() { 
+            $("#details").html("")
+            var data = Object.entries(contactForm[$(this).val()])
+            $("#contact-ticket-topic").html("")
+            data.forEach(function (item,key){
+                ticketTopicSelect.options[ticketTopicSelect.options.length] = new Option(item[0]);
+            })
+            $("#details").removeClass('display-none');
+            $("#details").append(data[0][1]);
+        })
+    
+        $("#contact-ticket-topic").change(function(){
+            var ticket_type = $("#contact-ticket-type").val();
+            var topic = $("#contact-ticket-topic").val();
+            $("#details").html(contactForm[ticket_type][topic]);
+        })
+    });
+    </script>
+    
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>
